@@ -28,16 +28,13 @@
 <div class="container py-4">
    <jsp:include page="/menu.jsp" />
 
- <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">회원 가입</h1>
-        <p class="col-md-8 fs-4">Membership Joining</p>      
-      </div>
+    <div class="mb-4">
+        <img src="../resources/images/MembershipJoining.jpg" class="img-fluid rounded-3" alt="회원가입 배너" style="width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
     </div>
 	
 
-   <div class="row align-items-md-stretch   text-center">
-		<form name="newMember"  action="processAddMember.jsp" method="post" onsubmit="return checkForm()">
+   <div class="row align-items-md-stretch text-center">
+		<form name="newMember" action="processAddMember.jsp" method="post" onsubmit="return checkForm()">
 			<div class="mb-3 row">
 				<label class="col-sm-2 ">아이디</label>
 				<div class="col-sm-3">
@@ -133,13 +130,14 @@
 
 				</div>
 			</div>
-			<div class="mb-3 row">
+			
+            <div class="mb-3 row">
 				<div class="col-sm-offset-2 col-sm-10 ">
-					<input type="submit" class="btn btn-primary " value="등록 " > 
-					<input type="reset" class="btn btn-primary " value="취소 " onclick="reset()" >
+                    <input type="submit" class="btn" style="background-color: #547748; color: white; border: 1px solid #547748;" value="등록 " > 
+					<input type="reset" class="btn" style="background-color: #547748; color: white; border: 1px solid #547748;" value="취소 " onclick="reset()" >
 				</div>
 			</div>
-		</form>
+            </form>
 	</div>
 	
 		   <jsp:include page="/footer.jsp" />  

@@ -10,7 +10,7 @@
    <%@ include file="menu.jsp"%>  	
     <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <div class="container-fluid py-5">
-      <h1 class="alert alert-danger">해당 도서가 존재하지 않습니다.</h1>  
+      <h1 class="alert alert-danger">"아쉽지만 음식이 목록에 없어요"</h1>  
       </div>
     </div>
 
@@ -18,7 +18,7 @@
       <div class="col-md-12">
         <div class="h-100 p-5">
         <p><%=request.getRequestURL()%>?<%=request.getQueryString()%>
-			<p><a href="books.jsp" class="btn btn-secondary"> 도서 목록 &raquo;</a>	
+			<p><a href="Foods.jsp" class="btn btn-secondary"> 음식 목록 &raquo;</a>	
         </div>
       </div>   
  	</div> 	

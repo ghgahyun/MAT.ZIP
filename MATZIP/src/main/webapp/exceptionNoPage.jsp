@@ -20,7 +20,7 @@
       <div class="col-md-12">
         <div class="h-100 p-5">
        		<p><%=request.getRequestURL()%></p>
-			<p><a href="books.jsp" class="btn btn-secondary"> 도서 목록 &raquo;</a>	
+			<p><a href="Foods.jsp" class="btn btn-secondary"> 음식 목록 &raquo;</a>	
         </div>
       </div>   
  	</div> 

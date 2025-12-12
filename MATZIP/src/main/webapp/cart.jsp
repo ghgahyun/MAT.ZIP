@@ -15,18 +15,14 @@
 <div class="container py-4">
    <%@ include file="menu.jsp"%>	
 
-   <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">장바구니</h1>
-        <p class="col-md-8 fs-4">Cart</p>      
-      </div>
-    </div>
-  	
-	 <div class="row align-items-md-stretch ">	 	
+   <div class="mb-4">
+      <img src="./resources/images/Cart.jpg" class="img-fluid rounded-3" alt="장바구니 배너" style="width: 100%;">
+   </div>
+   <div class="row align-items-md-stretch ">	 	
 		<div class="row">
 			<table width="100%">
 				<tr>
-					<td align="left"><a href="./deleteCart.jsp?cartId=<%=cartId%>" class="btn btn-danger">삭제하기</a></td>
+					<td align="left"><a href="./deleteCart.jsp?cartId=<%=cartId%>" class="btn btn-danger">전체 삭제</a></td>
 					<td align="right"><a href="./shippingInfo.jsp?cartId=<%= cartId %>" class="btn btn-success">주문하기</a></td>
 				</tr>
 			</table>
@@ -34,7 +30,7 @@
 		<div style="padding-top: 50px">
 			<table class="table table-hover">
 				<tr>
-					<th>상품</th>
+					<th>음식</th>
 					<th>가격</th>
 					<th>수량</th>
 					<th>소계</th>
@@ -56,7 +52,7 @@
 					<td><%=book.getUnitPrice()%></td>
 					<td><%=book.getQuantity()%></td>
 					<td><%=total%></td>
-					<td><a href="./removeCart.jsp?id=<%=book.getBookId()%>" class="badge text-bg-danger">삭제</a></td>
+					<td><a href="./removeCart.jsp?id=<%=book.getBookId()%>" class="badge text-bg-danger" style="text-decoration: none;">삭제</a></td>
 				</tr>
 				<%
 					}

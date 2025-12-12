@@ -9,18 +9,12 @@
 <div class="container py-4">
    <jsp:include page="/menu.jsp" />
 
- <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">회원 로그인</h1>
-        <p class="col-md-8 fs-4">Membership Login</p>      
-      </div>
+    <div class="mb-4">
+        <img src="../resources/images/MembershipLogin.jpg" class="img-fluid rounded-3" alt="로그인 배너" style="width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
     </div>
-	
-	
-
-	<div class="container" align="center">
+    <div class="container" align="center">
 		<div class="col-md-4 col-md-offset-4">
-			<h3 class="form-signin-heading">Please sign in</h3>
+			<h3 class="form-signin-heading mb-4">다양한 음식을 즐겨보세요!</h3>
 			<%
 				String error = request.getParameter("error");
 				if (error != null) {
@@ -33,23 +27,21 @@
   
     			<div class="form-floating mb-3 row">     
       				<input type="text" class="form-control" name='id' id="floatingInput" placeholder="ID" required autofocus>
-      				<label for="floatingInput">ID</label>      
+      				<label for="floatingInput">아이디</label>      
     			</div>
-    			<div class="form-floating  mb-3 row">     
+    			<div class="form-floating mb-3 row">     
      	 			<input type="password" class="form-control" name='password' placeholder="Password">
-    				 <label for="floatingPassword">Password</label>
-			</div>
+    				 <label for="floatingPassword">비밀번호 </label>
+			    </div>
 
-   
-  				<button class="btn btn btn-lg btn-success btn-block" type="submit">로그인</button>
+                <button class="btn btn-lg w-100" type="submit" style="background-color: #547748; color: white; border: 1px solid #547748;">로그인</button>
    				
   			</form>
 
 		</div>
 	</div>
 
-		   <jsp:include page="/footer.jsp" />  
+    <jsp:include page="/footer.jsp" />  
   </div>	
   </body>			
-	
 </html>

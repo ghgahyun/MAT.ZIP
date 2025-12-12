@@ -4,7 +4,7 @@
 <html>
 <head>
 <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
-<title>도서 정보</title>
+<title>음식 상세 정보</title>
 <script type="text/javascript">
 	function addToCart() {
 		if (confirm("상품을 장바구니에 추가하시겠습니까?")) {
@@ -14,50 +14,83 @@
 		}
 	}
 </script>
-</head>
-
+<style>
+    .country-badge {
+        font-size: 0.6em;
+        color: #D9534F;
+        border: 1px solid #D9534F;
+        padding: 2px 8px;
+        border-radius: 10px;
+        vertical-align: middle;
+        margin-left: 10px;
+    }
+    .type-badge {
+        font-size: 0.6em;
+        color: #0d6efd;
+        border: 1px solid #0d6efd;
+        padding: 2px 8px;
+        border-radius: 10px;
+        vertical-align: middle;
+        margin-left: 5px;
+    }
+    .sub-title {
+        color: #547748; 
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+</style>
 </head>
 <body>
 <div class="container py-4">
    <%@ include file="menu.jsp"%>	
 
-   <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">도서 정보</h1>
-        <p class="col-md-8 fs-4">BookInfo</p>      
-      </div>
-    </div>
-	
-	  <%@ include file="dbconn.jsp" %>
-	   <%
-		String bookId = request.getParameter("id");
+   <div class="mb-4">
+      <img src="./resources/images/FoodInfo.jpg" class="img-fluid rounded-3" alt="음식 정보 배너" style="width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+   </div>
+   <%@ include file="dbconn.jsp" %>
+   <%
+		String foodId = request.getParameter("id"); 
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 	
-		String sql = "select * from book where b_id = ?";
+		String sql = "select * from food where f_id = ?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, bookId);
+		pstmt.setString(1, foodId);
 		rs = pstmt.executeQuery();
 		if (rs.next()) {
 	%>		
 	 <div class="row align-items-md-stretch">	 	
 	 		<div class="col-md-5">
-				<img src="./resources/images/<%=rs.getString("b_filename")%>" style="width: 70%">
+                <img src="<%=request.getContextPath()%>/resources/images/Food/<%=rs.getString("f_image")%>" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 			</div>
-			<div class="col-md-6">
-				<h3><b><%=rs.getString("b_name")%></b></h3>
-				<p><%=rs.getString("b_description")%>
-				<p><b>도서코드 : </b><span class="badge text-bg-danger"> <%=rs.getString("b_id")%></span>							
-				<p><b>저자</b> : <%=rs.getString("b_author")%>	
-				<p><b>출판사</b> : <%=rs.getString("b_publisher")%>
-				<p><b>출판일</b> : <%=rs.getString("b_releaseDate")%>				
-				<p><b>분류</b> : <%=rs.getString("b_category")%>
-				<p><b>재고수</b> : <%=rs.getString("b_unitsInStock")%>
-				<h4><%=rs.getString("b_unitPrice")%>원</h4>
-				<p><form name="addForm" action="./addCart.jsp?id=<%=rs.getString("b_id")%>" method="post"><a href="#" class="btn btn-info" onclick="addToCart()"> 도서주문 &raquo;</a> 
-				    <a href="./cart.jsp" class="btn btn-warning"> 장바구니 &raquo;</a>
-					<a href="./books.jsp" class="btn btn-secondary"> 도서목록 &raquo;</a>
+			
+            <div class="col-md-6">
+                <h3>
+                    <b><%=rs.getString("f_name")%></b> 
+                    <span class="country-badge"><%=rs.getString("f_country")%></span>
+                    <span class="type-badge"><%=rs.getString("f_type")%></span>
+                </h3>
+				
+                <p class="text-muted"><%=rs.getString("f_shortDesc")%></p>
+                
+                <hr>
+
+                <div class="sub-title">[재료]</div>
+                <p><%=rs.getString("f_ingredients")%></p>
+
+                <div class="sub-title">[조리 방법]</div>
+                <p><%=rs.getString("f_recipe")%></p>
+				
+                <h3 class="fw-bold mt-4" style="color: #333;"><%=rs.getString("f_price")%>원</h3>
+				
+				<p class="mt-4">
+                <form name="addForm" action="./addCart.jsp?id=<%=rs.getString("f_id")%>" method="post">
+                    <a href="#" class="btn btn-lg" style="background-color: #547748; color: white; border: 1px solid #547748;" onclick="addToCart()"> 장바구니 담기 </a> 
+				    <a href="./cart.jsp" class="btn btn-lg btn-secondary"> 장바구니 이동 </a>
+					<a href="./Foods.jsp" class="btn btn-lg btn-outline-secondary"> 목록으로 </a>
 				</form>
 			</div>
 		</div>
