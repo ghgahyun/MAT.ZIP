@@ -1,7 +1,7 @@
 ﻿<%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="dto.Book"%>
-<%@ page import="dao.BookRepository"%>
+<%@ page import="dto.Food"%>
+<%@ page import="dao.FoodRepository"%>
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
@@ -38,21 +38,23 @@
 				</tr>
 				<%				
 					int sum = 0;
-					ArrayList<Book> cartList = (ArrayList<Book>) session.getAttribute("cartlist");
+			
+					ArrayList<Food> cartList = (ArrayList<Food>) session.getAttribute("cartlist");
 					if (cartList == null)
-						cartList = new ArrayList<Book>();
+						cartList = new ArrayList<Food>();
 
-					for (int i = 0; i < cartList.size(); i++) { // 상품리스트 하나씩 출력하기
-						Book book = cartList.get(i);
-						int total = book.getUnitPrice() * book.getQuantity();
+					for (int i = 0; i < cartList.size(); i++) {
+						Food food = cartList.get(i); 
+						int total = food.getUnitPrice() * food.getQuantity();
 						sum = sum + total;
 				%>
 				<tr>
-					<td><%=book.getBookId()%> - <%=book.getName()%></td>
-					<td><%=book.getUnitPrice()%></td>
-					<td><%=book.getQuantity()%></td>
+					<td><%=food.getFoodId()%> - <%=food.getCountry()%> - <%=food.getName()%></td>
+					
+					<td><%=food.getUnitPrice()%></td>
+					<td><%=food.getQuantity()%></td>
 					<td><%=total%></td>
-					<td><a href="./removeCart.jsp?id=<%=book.getBookId()%>" class="badge text-bg-danger" style="text-decoration: none;">삭제</a></td>
+					<td><a href="./removeCart.jsp?id=<%=food.getFoodId()%>" class="badge text-bg-danger" style="text-decoration: none;">삭제</a></td>
 				</tr>
 				<%
 					}
@@ -65,7 +67,7 @@
 					<th></th>
 				</tr>
 			</table>
-			<a href="./books.jsp" class="btn btn-secondary"> &laquo; 쇼핑 계속하기</a>
+			<a href="./Foods.jsp" class="btn btn-secondary"> &laquo; 쇼핑 계속하기</a>
 		</div>
 	</div>
 

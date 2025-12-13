@@ -10,24 +10,28 @@
 
 	String realFolder = "C:\\Users\\user\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MATZIP\\resources\\images\\Food";
 	String encType = "utf-8";
-	int maxSize = 10 * 1024 * 1024;
+	int maxSize = 10 * 1024 * 1024; 
 	
+
 	MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
 
-	String f_id = multi.getParameter("bookId");
+	String f_id = multi.getParameter("foodId");
 	String f_name = multi.getParameter("name");
 	String unitPrice = multi.getParameter("unitPrice");
-	String f_country = multi.getParameter("category");
-	String f_type = multi.getParameter("condition");
-	String f_shortDesc = multi.getParameter("publisher");
-	String f_ingredients = multi.getParameter("author");
-	String f_recipe = multi.getParameter("description");
+	String f_country = multi.getParameter("country");
+	String f_type = multi.getParameter("type");
+	String f_shortDesc = multi.getParameter("description");
+	String f_ingredients = multi.getParameter("ingredients");
+	String f_recipe = multi.getParameter("recipe");
+	String f_allergy = multi.getParameter("allergy");
+
 
 	int price;
-	if (unitPrice.isEmpty())
+	if (unitPrice == null || unitPrice.isEmpty())
 		price = 0;
 	else
 		price = Integer.valueOf(unitPrice);
+
 
 	Enumeration files = multi.getFileNames();
 	String fname = (String) files.nextElement();
@@ -35,7 +39,8 @@
 	
 	PreparedStatement pstmt = null;	
 	
-	String sql = "insert into food values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	
+	String sql = "insert into food values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, f_id);
@@ -46,7 +51,8 @@
 	pstmt.setString(6, f_shortDesc);
 	pstmt.setString(7, f_ingredients);
 	pstmt.setString(8, f_recipe);
-	pstmt.setString(9, fileName);
+	pstmt.setString(9, f_allergy); 
+	pstmt.setString(10, fileName); 
 	
 	pstmt.executeUpdate();
 	
@@ -55,6 +61,6 @@
 	if (conn != null)
 		conn.close();
 	
+
 	response.sendRedirect("Foods.jsp");
-%>
 %>

@@ -83,7 +83,15 @@
 
                 <div class="sub-title">[조리 방법]</div>
                 <p><%=rs.getString("f_recipe")%></p>
-				
+                
+				 <div class="mt-3" style="font-size: 0.9rem;">
+                    <span style="color: #333333; font-weight: bold;"> 알레르기 유발 가능성:</span>
+                    
+                    <span style="color: #555555;">
+                        <%=rs.getString("f_allergy") != null ? rs.getString("f_allergy") : "정보 없음" %>
+                    </span>
+                </div>
+                
                 <h3 class="fw-bold mt-4" style="color: #333;"><%=rs.getString("f_price")%>원</h3>
 				
 				<p class="mt-4">

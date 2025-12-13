@@ -9,8 +9,8 @@
 	String sessionId = (String) session.getAttribute("sessionId");
 %>
 <sql:setDataSource var="dataSource"
-	url="jdbc:mysql://localhost:3306/BookMarketDB"
-	driver="com.mysql.jdbc.Driver" user="root" password="1234" />
+	url="jdbc:mysql://localhost:3306/MATZIP"
+	driver="com.mysql.cj.jdbc.Driver" user="MATZIP" password="1234" />
 
 <sql:query dataSource="${dataSource}" var="resultSet">
    SELECT * FROM MEMBER WHERE ID=?
@@ -23,12 +23,9 @@
 <div class="container py-4">
    <jsp:include page="/menu.jsp" />
 
- <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">회원 수정</h1>
-        <p class="col-md-8 fs-4">Membership Updating</p>      
-      </div>
-    </div>
+   <div class="mb-4">
+      <img src="../resources/images/MembershipUpdating.jpg" class="img-fluid rounded-3" alt="회원 수정 배너" style="width: 100%;">
+   </div>
     
 	
 	<c:forEach var="row" items="${resultSet.rows}">
@@ -42,12 +39,11 @@
 	<c:set var="day" value="${birth.split('/')[2]}" />
 	
 	<div class="container">
-		<form name="newMember"action="processUpdateMember.jsp" method="post" onsubmit="return checkForm()">
+		<form name="newMember" action="processUpdateMember.jsp" method="post" onsubmit="return checkForm()">
 				<div class="mb-3 row">
 				<label class="col-sm-2 ">아이디</label>
 				<div class="col-sm-3">
-					<input name="id" type="text" class="form-control" placeholder="id" value="<c:out value='${row.id }'/>" >
-				</div>
+					<input name="id" type="text" class="form-control" placeholder="id" value="<c:out value='${row.id }'/>" readonly> </div>
 			</div>
 				<div class="mb-3 row">
 				<label class="col-sm-2">비밀번호</label>
@@ -138,8 +134,9 @@
 			</div>
 				<div class="mb-3 row">
 				<div class="col-sm-offset-2 col-sm-10 ">
-					<input type="submit" class="btn btn-primary" value="회원수정 "> 
-					<a href="deleteMember.jsp" class="btn btn-primary">회원탈퇴</a>
+					<input type="submit" class="btn" style="background-color: #547748; color: white; border: 1px solid #547748;" value="회원수정 "> 
+					
+					<a href="deleteMember.jsp" class="btn btn-danger">회원탈퇴</a>
 				</div>
 			</div>
 		</form>	

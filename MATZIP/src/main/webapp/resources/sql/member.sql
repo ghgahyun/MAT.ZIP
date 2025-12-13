@@ -1,6 +1,6 @@
-USE BookMarketDB;
+USE MATZIP;
 
-create table member ( 
+CREATE TABLE member ( 
     id varchar(10) not null,
     password varchar(10) not null,
     name varchar(10) not null,
@@ -13,5 +13,5 @@ create table member (
     primary key(id) 
 ) default CHARSET=utf8;
 
-select * from member;
-drop table member;
+
+SELECT * FROM member;

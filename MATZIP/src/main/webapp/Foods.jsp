@@ -26,6 +26,11 @@
         padding-bottom: 15px;
         transition: transform 0.2s;
         border: none;
+        
+ 
+        display: flex;
+        flex-direction: column;
+        height: 100%; 
     }
     .food-card:hover {
         transform: translateY(-5px); 
@@ -36,6 +41,17 @@
         width: 100%;
         height: 250px;
         object-fit: cover;
+    }
+
+
+    .description-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 2; 
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 3em; 
+        margin-bottom: 10px;
     }
 
     .pagination {
@@ -144,13 +160,13 @@
 				
                 <h4 class="fw-bold"><%=rs.getString("f_name")%></h4>
                 
-                <p class="px-3 text-muted" style="font-size: 0.9rem;">
+                <p class="px-3 text-muted description-text">
                     <%=rs.getString("f_shortDesc")%>
                 </p>
 				
-                <h5 class="fw-bold mt-3"><%=rs.getString("f_price")%>원</h5>
+                <h5 class="fw-bold"><%=rs.getString("f_price")%>원</h5>
 				
-                <a href="./Food.jsp?id=<%=rs.getString("f_id")%>" class="btn mt-2" style="background-color: #547748; color: white; border: 1px solid #547748; width: 150px; border-radius: 20px;">
+                <a href="./Food.jsp?id=<%=rs.getString("f_id")%>" class="btn mt-auto mx-auto" style="background-color: #547748; color: white; border: 1px solid #547748; width: 150px; border-radius: 20px;">
                     상세 정보
                 </a>
 			</div>	

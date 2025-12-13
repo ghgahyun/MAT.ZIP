@@ -1,41 +1,42 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="dto.Book"%>
-<%@ page import="dao.BookRepository"%>
+<%@ page import="dto.Food"%>
+<%@ page import="dao.FoodRepository"%>
 <%
 	String id = request.getParameter("id");
 	if (id == null || id.trim().equals("")) {
-		response.sendRedirect("products.jsp");
+		response.sendRedirect("Foods.jsp"); 
 		return;
 	}
 
-	BookRepository dao = BookRepository.getInstance();
+	FoodRepository dao = FoodRepository.getInstance();
 
-	Book product = dao.getBookById(id);
+	Food product = dao.getFoodById(id);
 	if (product == null) {
-		response.sendRedirect("exceptionNoBookId.jsp");
+		response.sendRedirect("exceptionNoFoodId.jsp"); 
 	}
 
-	ArrayList<Book> goodsList = dao.getAllBooks();
-	Book goods = new Book();
+	ArrayList<Food> goodsList = dao.getAllFoods();
+	Food goods = new Food();
 	for (int i = 0; i < goodsList.size(); i++) {
 		goods = goodsList.get(i);
-		if (goods.getBookId().equals(id)) { 			
+	
+		if (goods.getFoodId().equals(id)) { 			
 			break;
 		}
 	}
 	
-	ArrayList<Book> list = (ArrayList<Book>) session.getAttribute("cartlist");
+	ArrayList<Food> list = (ArrayList<Food>) session.getAttribute("cartlist");
 	if (list == null) { 
-		list = new ArrayList<Book>();
+		list = new ArrayList<Food>();
 		session.setAttribute("cartlist", list);
 	}
 
 	int cnt = 0;
-	Book goodsQnt = new Book();
+	Food goodsQnt = new Food();
 	for (int i = 0; i < list.size(); i++) {
 		goodsQnt = list.get(i);
-		if (goodsQnt.getBookId().equals(id)) {
+		if (goodsQnt.getFoodId().equals(id)) {
 			cnt++;
 			int orderQuantity = goodsQnt.getQuantity() + 1;
 			goodsQnt.setQuantity(orderQuantity);
@@ -47,5 +48,5 @@
 		list.add(goods);
 	}
 
-	response.sendRedirect("book.jsp?id=" + id);
+	response.sendRedirect("Food.jsp?id=" + id);
 %>

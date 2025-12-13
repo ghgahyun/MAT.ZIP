@@ -1,11 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=utf-8"%>
 
-<%
-	String sessionId = (String) session.getAttribute("sessionId");
-%>
 <style>
-   
     .custom-nav-link {
         color: #547748 !important;
         font-weight: bold;         
@@ -14,7 +10,6 @@
         transition: color 0.2s;  
         text-decoration: none;    
     }
-
 
     .custom-nav-link:hover, .custom-nav-link:focus {
         color: #e08e58 !important; 
@@ -30,8 +25,9 @@
       </a>
       
       <ul class="nav nav-pills align-items-center"> 
+      
       <c:choose>
-          <c:when test="${empty sessionId}">
+            <c:when test="${empty sessionId}">
                 <li class="nav-item">
                     <a class="nav-link custom-nav-link" href="<c:url value="/member/loginMember.jsp"/>">로그인</a>
                 </li>
@@ -39,8 +35,11 @@
                     <a class="nav-link custom-nav-link" href='<c:url value="/member/addMember.jsp"/>'>회원가입</a>
                 </li>
             </c:when>
+            
             <c:otherwise>
-                <li style="padding-top: 7px; color: black; font-weight: bold; margin-right: 10px;">[<%=sessionId%>님]</li>
+                <li style="color: #e08e58; font-weight: bold; margin-right: 15px; font-size: 1.1rem;">
+                    ${sessionName}님
+                </li>
                 <li class="nav-item">
                     <a class="nav-link custom-nav-link" href="<c:url value="/member/logoutMember.jsp"/>">로그아웃</a>
                 </li>
@@ -51,17 +50,26 @@
       </c:choose>
       
         <li class="nav-item">
-            <a href="<c:url value="/Foods.jsp"/>" class="nav-link custom-nav-link">상품목록</a>
+            <a href="<c:url value="/Foods.jsp"/>" class="nav-link custom-nav-link">음식목록</a>
         </li>
         <li class ="nav-item">
-            <a href = "<c:url value="/addFood.jsp"/>" class = "nav-link custom-nav-link">상품등록</a>
+            <a href = "<c:url value="/addFood.jsp"/>" class = "nav-link custom-nav-link">음식등록</a>
         </li>
         <li class ="nav-item">
-            <a href = "<c:url value="/editFood.jsp?edit=update"/>" class = "nav-link custom-nav-link">상품수정</a>
+            <a href = "<c:url value="/editFood.jsp?edit=update"/>" class = "nav-link custom-nav-link">음식수정</a>
         </li>
         <li class ="nav-item">
-            <a href = "<c:url value="/editFood.jsp?edit=delete"/>" class = "nav-link custom-nav-link">상품삭제</a>
+            <a href = "<c:url value="/editFood.jsp?edit=delete"/>" class = "nav-link custom-nav-link">음식삭제</a>
         </li>
+
+        <c:if test="${not empty sessionId}">
+            <li class="nav-item">
+                <a href="<c:url value="/cart.jsp"/>" class="nav-link custom-nav-link">
+                    장바구니
+                </a>
+            </li>
+        </c:if>
+
       </ul> 
     </div>
 </div>

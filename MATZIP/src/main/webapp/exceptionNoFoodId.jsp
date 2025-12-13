@@ -3,7 +3,7 @@
 <html >
 <head>    
     <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
-	<title>도서아이디 오류</title>
+	<title>음식 아이디 오류</title>
 </head>
 <body>
 <div class="container py-4">

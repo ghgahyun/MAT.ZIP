@@ -32,22 +32,17 @@
 <div class="container py-4">
    <%@ include file="menu.jsp"%>	
 
-   <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">주문 완료</h1>
-        <p class="col-md-8 fs-4">Order Completed</p>      
-      </div>
-    </div>
+   <div class="mb-4">
+      <img src="./resources/menu/OrderCompleted.jpg" class="img-fluid rounded-3" alt="주문 완료 배너" style="width: 100%;">
+   </div>
   	
- 
-	
 	  <div class="row align-items-md-stretch ">
 		<h2 class="alert alert-danger">주문해주셔서 감사합니다.</h2>
 		<p>주문은	<%	out.println(shipping_shippingDate);	%>에 배송될 예정입니다! !	
 		<p>주문번호 :	<%	out.println(shipping_cartId);	%>
 	</div>
 	<div class="container">
-		<p><a href="./books.jsp" class="btn btn-secondary"> &laquo;도서 목록</a>
+		<p><a href="./Foods.jsp" class="btn btn-secondary"> &laquo; 음식 목록</a>
 	</div>
 	<%@ include file="footer.jsp"%>   
   </div>

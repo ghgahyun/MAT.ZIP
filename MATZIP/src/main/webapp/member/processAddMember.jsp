@@ -26,8 +26,8 @@
 %>
 
 <sql:setDataSource var="dataSource"
-	url="jdbc:mysql://localhost:3306/BookMarketDB"
-	driver="com.mysql.jdbc.Driver" user="root" password="1234" />
+	url="jdbc:mysql://localhost:3306/MATZIP"
+	driver="com.mysql.jdbc.Driver" user="MATZIP" password="1234" />
 
 <sql:update dataSource="${dataSource}" var="resultSet">
    INSERT INTO member VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)

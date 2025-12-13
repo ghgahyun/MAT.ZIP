@@ -2,29 +2,21 @@
 <%@ page import="java.sql.*"%>
 <%@ include file="dbconn.jsp"%>
 <%
-	String productId = request.getParameter("id");
+
+	String foodId = request.getParameter("id");
 
 	PreparedStatement pstmt = null;	
-	ResultSet rs = null;
 
-	String sql = "select * from book";
+	String sql = "DELETE FROM food WHERE f_id = ?";
 	pstmt = conn.prepareStatement(sql);
-	rs = pstmt.executeQuery();
+	pstmt.setString(1, foodId);
+	pstmt.executeUpdate(); 
 
-	if (rs.next()) {
-		sql = "delete from book where b_id = ?";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, productId);
-		pstmt.executeUpdate();
-	} else
-		out.println("일치하는 상품이 없습니다");
-	
-	if (rs != null)
-		rs.close();
+
 	if (pstmt != null)
 		pstmt.close();
 	if (conn != null)
 		conn.close();
 	
-	response.sendRedirect("editBook.jsp?edit=delete");
+	response.sendRedirect("editFood.jsp?edit=delete");
 %>

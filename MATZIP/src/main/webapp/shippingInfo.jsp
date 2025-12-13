@@ -8,15 +8,11 @@
 <div class="container py-4">
    <%@ include file="menu.jsp"%>	
 
-   <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">배송 정보</h1>
-        <p class="col-md-8 fs-4">Shipping Info</p>      
-      </div>
-    </div>
+   <div class="mb-4">
+      <img src="./resources/menu/ShippingInfo.jpg" class="img-fluid rounded-3" alt="배송 정보 배너" style="width: 100%;">
+   </div>
   	
 	 <div class="row align-items-md-stretch ">	 	 
-
 	
 	<form action="./processShippingInfo.jsp" method="post" >
 		<input type="hidden" name="cartId" value="<%=request.getParameter("cartId")%>">

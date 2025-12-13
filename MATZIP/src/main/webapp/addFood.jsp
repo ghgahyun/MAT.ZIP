@@ -1,104 +1,115 @@
 ﻿<%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	// 로그인 체크
+	if (session.getAttribute("sessionId") == null) {
+		response.sendRedirect("./member/loginMember.jsp");
+		return;
+	}
+%>
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <script type="text/javascript" src="./resources/js/validation.js"></script>
-
 <title>음식 등록</title>
 </head>
 <body>
+
 <fmt:setLocale value='<%= request.getParameter("language") %>'/>
-<fmt:bundle basename="bundle.message" >
+<fmt:bundle basename="bundle.message">
+
 <div class="container py-4">
    <%@ include file="menu.jsp"%>	
 
    <div class="mb-4">
       <img src="./resources/images/FoodAddition.jpg" class="img-fluid rounded-3" alt="음식 등록 배너" style="width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
    </div>
+   
    <div class="row align-items-md-stretch">	 	
-	  	<div class="text-end mb-3"> <a href="?language=ko" class="btn btn-sm btn-outline-secondary">Korean</a>
+	  	<div class="text-end mb-3"> 
+            <a href="?language=ko" class="btn btn-sm btn-outline-secondary">Korean</a>
             <a href="?language=en" class="btn btn-sm btn-outline-secondary">English</a>
-			<a href="logout.jsp" class="btn btn-sm btn-danger pull right ms-2">logout</a>
+            <a href="member/logoutMember.jsp" class="btn btn-sm btn-danger pull right ms-2">logout</a>
 		</div>	
 		
-        <form name="newBook" action="./processAddBook.jsp" method="post" enctype ="multipart/form-data">
+        <form name="newFood" action="./processAddFood.jsp" method="post" enctype ="multipart/form-data">
 			
 			<div class="mb-3 row">
-				<label class="col-sm-2 fw-bold"><fmt:message key="bookId" /></label>
+				<label class="col-sm-2 fw-bold"><fmt:message key="code"/></label>
 				<div class="col-sm-3">
-					<input type="text" name="bookId" id="bookId" class="form-control" >
+					<input type="text" name="foodId" id="foodId" class="form-control" placeholder="<fmt:message key='msgCode'/>" >
 				</div>
 			</div>
+			
 			<div class="mb-3 row">
-				<label class="col-sm-2 fw-bold"><fmt:message key="name" /></label>
+				<label class="col-sm-2 fw-bold"><fmt:message key="name"/></label>
 				<div class="col-sm-3">
-					<input type="text" name="name" id="name" class="form-control" >
+					<input type="text" name="name" id="name" class="form-control" placeholder="<fmt:message key='msgName'/>" >
 				</div>
 			</div>
+			
 			<div class="mb-3 row">
-				<label class="col-sm-2 fw-bold"><fmt:message key="unitPrice" /></label>
+				<label class="col-sm-2 fw-bold"><fmt:message key="price"/></label>
 				<div class="col-sm-3">
-					<input type="text" name="unitPrice" id="unitPrice" class="form-control" >
+					<input type="text" name="unitPrice" id="unitPrice" class="form-control" placeholder="<fmt:message key='msgPrice'/>" >
 				</div>
 			</div>
+			
 			<div class="mb-3 row">
-				<label class="col-sm-2 fw-bold"><fmt:message key="author" /></label>
+				<label class="col-sm-2 fw-bold"><fmt:message key="country"/></label>
 				<div class="col-sm-3">
-					<input type="text" name="author" class="form-control">
+					<input type="text" name="country" class="form-control" placeholder="<fmt:message key='msgCountry'/>">
 				</div>
 			</div>
+			
 			<div class="mb-3 row">
-				<label class="col-sm-2 fw-bold"><fmt:message key="publisher" /></label>
+				<label class="col-sm-2 fw-bold"><fmt:message key="type"/></label>
 				<div class="col-sm-3">
-					<input type="text" name="publisher" class="form-control">
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<label class="col-sm-2 fw-bold"><fmt:message key="releaseDate" /></label>
-				<div class="col-sm-3">
-					<input type="text" name="releaseDate" class="form-control">
+					<input type="text" name="type" class="form-control" placeholder="<fmt:message key='msgType'/>">
 				</div>
 			</div>
 	
 			<div class="mb-3 row">
-				<label class="col-sm-2 fw-bold"><fmt:message key="description" /></label>
+				<label class="col-sm-2 fw-bold"><fmt:message key="desc"/></label>
 				<div class="col-sm-5">
 					<textarea name="description" id="description" cols="50" rows="2"
-						class="form-control" placeholder="100자 이상 적어주세요"></textarea>
+						class="form-control" placeholder="<fmt:message key='msgDesc'/>"></textarea>
 				</div>
 			</div>			
-			<div class="mb-3 row">
-				<label class="col-sm-2 fw-bold"><fmt:message key="category" /></label>
-				<div class="col-sm-3">
-					<input type="text" name="category" class="form-control" >
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<label class="col-sm-2 fw-bold"><fmt:message key="unitsInStock" /></label>
-				<div class="col-sm-3">
-					<input type="text" name="unitsInStock" id="unitsInStock" class="form-control" >
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<label class="col-sm-2 fw-bold"><fmt:message key="condition" /></label>
-				<div class="col-sm-5">
-					<input type="radio" name="condition" value="New " checked> <fmt:message key="condition_New" /> 
-					<input type="radio" name="condition" value="Old" class="ms-2"> <fmt:message key="condition_Old" /> 
-					<input type="radio" name="condition" value="EBook" class="ms-2"> <fmt:message key="condition_Ebook" />
-				</div>				
-			</div>		
 			
 			<div class="mb-3 row">
-				<label class="col-sm-2 fw-bold"><fmt:message key="bookImage" /></label>
+				<label class="col-sm-2 fw-bold"><fmt:message key="ingredients"/></label>
 				<div class="col-sm-5">
-					<input type="file" name="bookImage" class="form-control">
+					<textarea name="ingredients" cols="50" rows="2"
+						class="form-control" placeholder="<fmt:message key='msgIng'/>"></textarea>
+				</div>
+			</div>
+
+            <div class="mb-3 row">
+				<label class="col-sm-2 fw-bold text-danger"><fmt:message key="allergy"/></label>
+				<div class="col-sm-5">
+					<input type="text" name="allergy" class="form-control" placeholder="<fmt:message key='msgAllergy'/>">
+				</div>
+			</div>
+
+            <div class="mb-3 row">
+				<label class="col-sm-2 fw-bold"><fmt:message key="recipe"/></label>
+				<div class="col-sm-8">
+					<textarea name="recipe" cols="50" rows="5"
+						class="form-control" placeholder="<fmt:message key='msgRecipe'/>"></textarea>
+				</div>
+			</div>
+
+			<div class="mb-3 row">
+				<label class="col-sm-2 fw-bold"><fmt:message key="image"/></label>
+				<div class="col-sm-5">
+					<input type="file" name="foodImage" class="form-control">
 				</div>
 			</div>
 			
 			<div class="mb-3 row">
 				<div class="col-sm-offset-2 col-sm-10">
-					<input type="button" class="btn btn-success px-4" value="<fmt:message key="button" />" onclick="CheckAddBook()">
+                    <input type="submit" class="btn btn-primary px-4" value="<fmt:message key='btnAdd'/>" >
 				</div>
 			</div>
 		</form>
