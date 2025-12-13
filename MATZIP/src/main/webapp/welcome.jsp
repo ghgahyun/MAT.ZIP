@@ -60,7 +60,7 @@
 
       <div class="col-md-6 mb-3">
         <div class="recommend-box">
-            <div class="reco-title">오늘의 추천 음식</div>
+            <div class="reco-title">맛.ZIP의 추천 음식</div>
             
             <%
                 PreparedStatement pstmt = null;
