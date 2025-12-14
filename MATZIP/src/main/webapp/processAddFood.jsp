@@ -8,7 +8,8 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
-	String realFolder = "C:\\Users\\user\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MATZIP\\resources\\images\\Food";
+	String savePath = "/resources/images/Food";
+	String realFolder = request.getServletContext().getRealPath(savePath);
 	String encType = "utf-8";
 	int maxSize = 10 * 1024 * 1024; 
 	

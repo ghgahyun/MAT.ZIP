@@ -151,7 +151,7 @@
         		    title: '프랑스 (France)', 
         		    flag: './resources/images/flags/france.png', 
         		    map: './resources/images/maps/france_map.jpg',
-        		    desc: '요리를 예술처럼 여기는 나라로, 소스 중심의 정교한 조리와 풍부한 미식 문화가 특징.' 
+        		    desc: '요리를 예술처럼 여기는 나라로, 소스 중심의 정교한 조리와 풍부한 미식 문화.' 
         		},
         		'türkiye': { 
         		    title: '튀르키예 (Türkiye)', 

@@ -16,9 +16,9 @@ function CheckAddFood() {
     var description = document.getElementById("description");
     var form = document.newFood;
 
-    if (!check(/^FOOD[0-9]{2,9}$/, foodId,
-        "[음식 코드]\nFOOD와 숫자를 조합하여 5~12자까지 입력하세요\n첫 글자는 반드시 FOOD로 시작해야 합니다."))
-        return false;
+	if (!check(/^[A-Z]{2}[0-9]{3,10}$/, foodId,
+	        "[음식 코드]\n영문 대문자 2자와 숫자를 조합하여 5~12자까지 입력하세요.\n첫 두 글자는 반드시 국가명 코드로 시작해야 합니다."))
+	        return false;
 
     if (name.value.length < 4 || name.value.length > 50) { 
         alert("[음식명]\n최소 4자에서 최대 50자까지 입력하세요");
@@ -46,8 +46,8 @@ function CheckAddFood() {
         return false;
     }
     
-    if (description.value.length < 100) { 
-        alert("[상세설명]\n최소 100자 이상 입력하세요");
+    if (description.value.length < 50) { 
+        alert("[짧은 설명]]\n최소 50자 이상 입력하세요");
         description.select();
         description.focus();
         return false;
