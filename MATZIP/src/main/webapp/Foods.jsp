@@ -4,79 +4,8 @@
 <html>
 <head>
  <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
+ <link rel="stylesheet" href="./resources/css/foods.css" />
  <title>음식 목록</title>
- <style>
-    .category-nav a {
-        color: #888;
-        text-decoration: none;
-        font-size: 1.1rem;
-        margin: 0 15px;
-        padding-bottom: 5px;
-        font-weight: bold;
-    }
-    .category-nav a:hover, .category-nav a.active {
-        color: #000;
-        border-bottom: 3px solid #000; 
-    }
-
-    .food-card {
-        background-color: #EEE8DF; 
-        border-radius: 15px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        padding-bottom: 15px;
-        transition: transform 0.2s;
-        border: none;
-        
- 
-        display: flex;
-        flex-direction: column;
-        height: 100%; 
-    }
-    .food-card:hover {
-        transform: translateY(-5px); 
-    }
-    .food-img {
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-    }
-
-
-    .description-text {
-        display: -webkit-box;
-        -webkit-line-clamp: 2; 
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        height: 3em; 
-        margin-bottom: 10px;
-    }
-
-    .pagination {
-        display: flex;
-        justify-content: center;
-        margin-top: 30px;
-    }
-    .pagination a {
-        color: #547748;
-        float: left;
-        padding: 8px 16px;
-        text-decoration: none;
-        border: 1px solid #ddd;
-        margin: 0 4px;
-        border-radius: 5px;
-    }
-    .pagination a.active {
-        background-color: #547748;
-        color: white;
-        border: 1px solid #547748;
-    }
-    .pagination a:hover:not(.active) {
-        background-color: #ddd;
-    }
- </style>
 </head>
 <body>
 <div class="container py-4">
@@ -131,7 +60,7 @@
        <a href="?category=스페인&pageNum=1" class="<%= category.equals("스페인") ? "active" : "" %>">스페인</a>
        <a href="?category=이탈리아&pageNum=1" class="<%= category.equals("이탈리아") ? "active" : "" %>">이탈리아</a>
        <a href="?category=프랑스&pageNum=1" class="<%= category.equals("프랑스") ? "active" : "" %>">프랑스</a>
-       <a href="?category=터키&pageNum=1" class="<%= category.equals("터키") ? "active" : "" %>">터키</a>
+       <a href="?category=튀르키예&pageNum=1" class="<%= category.equals("튀르키예") ? "active" : "" %>">튀르키예</a>
    </div>
 
    <div class="row align-items-md-stretch text-center">

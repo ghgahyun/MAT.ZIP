@@ -2,7 +2,6 @@
 <%@ page import="java.sql.*"%>
 
 <%
-
 	String sessionId = (String) session.getAttribute("sessionId");
 
 	if (sessionId == null) {
@@ -19,6 +18,7 @@
 <html>
 <head>
  <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
+ <link rel="stylesheet" href="./resources/css/foods.css" />
  <title>음식 편집</title>
  <script type="text/javascript">
 	function deleteConfirm(id) {
@@ -28,40 +28,6 @@
 			return;
 	}
  </script>
- <style>
-    .food-card {
-        background-color: #EEE8DF;
-        border-radius: 15px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        padding-bottom: 15px;
-        transition: transform 0.2s;
-        border: none;
-        
-        display: flex;
-        flex-direction: column;
-        height: 100%; 
-    }
-    .food-card:hover {
-        transform: translateY(-5px);
-    }
-    .food-img {
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-    }
-    .btn-custom {
-        width: 150px; 
-        border-radius: 20px;
-        margin-top: 10px;
-    }
-
-    .search-container {
-        max-width: 500px;
-        margin: 0 auto;
-    }
- </style>
 </head>
 <%
 	String edit = request.getParameter("edit");
@@ -133,7 +99,7 @@
 				
 				<h5 class="fw-bold mt-3"><%=rs.getString("f_price")%>원</h5>
 				
-				<div class="mt-auto pb-2 w-100">
+                <div class="mt-auto pb-2 w-100">
 				<%
 					if (edit != null && edit.equals("update")) {
 				%>
@@ -151,7 +117,6 @@
 		<%
 			}
             
-      
             if (!hasData) {
         %>
             <div class="col-12" style="padding: 50px 0;">

@@ -1,10 +1,16 @@
 ﻿<%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
-	// 로그인 체크
-	if (session.getAttribute("sessionId") == null) {
-		response.sendRedirect("./member/loginMember.jsp");
-		return;
+	String sessionId = (String) session.getAttribute("sessionId");
+
+	if (sessionId == null) {
+%>
+	<script>
+		alert("로그인이 필요합니다.");
+		location.href = "./member/loginMember.jsp";
+	</script>
+<%
+		return; 
 	}
 %>
 <html>
@@ -22,7 +28,7 @@
    <%@ include file="menu.jsp"%>	
 
    <div class="mb-4">
-      <img src="./resources/images/FoodAddition.jpg" class="img-fluid rounded-3" alt="음식 등록 배너" style="width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      <img src="./resources/images/FoodAddition.jpg" class="img-fluid rounded-3" alt="음식 등록 배너" style="width: 100%; box-shadow: 0 4px 6px rgba(0 0 0 / 10%);">
    </div>
    
    <div class="row align-items-md-stretch">	 	
@@ -109,8 +115,10 @@
 			
 			<div class="mb-3 row">
 				<div class="col-sm-offset-2 col-sm-10">
-                    <input type="submit" class="btn btn-primary px-4" value="<fmt:message key='btnAdd'/>" >
-				</div>
+                    <input type="submit" 
+                           class="btn btn-primary px-4" 
+                           value="<fmt:message key='btnAdd'/>"
+                           onclick="return CheckAddFood()"> </div>
 			</div>
 		</form>
 	</div>
