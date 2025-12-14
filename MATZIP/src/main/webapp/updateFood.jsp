@@ -10,13 +10,10 @@
 <div class="container py-4">
    <%@ include file="menu.jsp"%>	
 
-   <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">음식 정보 수정</h1>
-        <p class="col-md-8 fs-4">Food Updating</p>      
-      </div>
-    </div>
-  <%@ include file="dbconn.jsp"%>
+   <div class="mb-4">
+      <img src="./resources/images/FoodEdit.jpg" class="img-fluid rounded-3" alt="음식 정보 수정 배너" style="width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+   </div>
+   <%@ include file="dbconn.jsp"%>
   <%
 		String foodId = request.getParameter("id");
 

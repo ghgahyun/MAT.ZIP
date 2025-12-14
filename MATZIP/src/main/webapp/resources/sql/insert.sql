@@ -369,3 +369,4 @@ INSERT INTO food VALUES('KR010', '잡채', 12000, '한국', '면',
 
 -- 확인
 SELECT count(*) FROM food;
+SELECT * FROM food;
